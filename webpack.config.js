@@ -1,13 +1,15 @@
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-	template: __dirname + '/app/index.html',
+	template: __dirname + '/src/index.html',
 	filename: 'index.html',
 	inject: 'body'
 });
 
 module.exports = {
 	entry: [
-		'./app/index.js'
+		'./src/index.js'
 	],
 	output: {
 		path: __dirname + '/dist',
@@ -15,8 +17,32 @@ module.exports = {
 	},
 	module: {
 		loaders: [
-			{test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loaders: ['babel-loader']
+			},
+			{
+				test: /\.css$/,
+				loader: 'style-loader'
+			},
+			{
+				test: /\.css$/,
+				loader: 'css-loader',
+				query: {
+					modules: true,
+					localIdentName: '[name]__[local]___[hash:base64:5]'
+				}
+			}
 		]
 	},
-	plugins: [HtmlWebpackPluginConfig]
+	plugins: [
+		new webpack.DefinePlugin({
+	   		'process.env': {
+	     		 NODE_ENV: JSON.stringify('production')
+	    	}
+	  	}),
+		new ExtractTextPlugin('styles.css'),
+		HtmlWebpackPluginConfig,
+	]
 };
