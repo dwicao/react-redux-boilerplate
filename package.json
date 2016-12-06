@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-todo",
+  "name": "react-redux-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
@@ -25,6 +25,10 @@
   },
   "dependencies": {
     "react": "^15.4.0",
-    "react-dom": "^15.4.0"
+    "react-dom": "^15.4.0",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0",
+    "redux-localstorage-simple": "^1.2.0",
+    "redux-thunk": "^2.1.0"
   }
 }
