@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "production": "NODE_ENV=production webpack -p",
-    "start": "webpack-dev-server --progress --inline --hot"
+    "build": "webpack",
+    "build:prod": "webpack -p",
+    "start": "webpack-dev-server --progress --inline --hot --port 8000"
   },
   "keywords": [],
   "author": "",
